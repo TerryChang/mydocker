@@ -1,0 +1,14 @@
+[Unit]
+Description=Oracle Database
+After=network.target lsnrctl.service
+
+[Service]
+Type=forking
+User=oracle
+Group=dba
+EnvironmentFile=/etc/systemd/system/oracle.conf
+ExecStart=/etc/systemd/system/oracledb.sh start
+ExecStop=/etc/systemd/system/oracledb.sh stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Oracle Net Listener
+After=network.target
+
+[Service]
+Type=forking
+User=oracle
+Group=dba
+EnvironmentFile=/etc/systemd/system/oracle.conf
+ExecStart=/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl start
+ExecStop=/u01/app/oracle/product/11.2.0/xe/bin/lsnrctl stop
+
+[Install]
+WantedBy=multi-user.target
