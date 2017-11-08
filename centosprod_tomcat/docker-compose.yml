@@ -1,0 +1,17 @@
+version: '2.1'
+
+services:
+  tomcat:
+    image: centosprod_tomcat
+    container_name: centosprod_tomcat
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ports:
+      - "21:21"
+      - "2122:22"
+      - "8000:8000"
+      - "8080:8080"
+      - "8009:8009"
+      - "64000-64010:64000-64010"

@@ -1,0 +1,14 @@
+# /etc/systemd/system/tomcat.service
+[Unit]
+Description=Apache Tomcat Service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=root
+EnvironmentFile=/etc/systemd/system/tomcat.conf
+ExecStart=/opt/tomcat/bin/catalina.sh start
+ExecStop=/opt/tomcat/bin/catalina.sh stop
+
+[Install]
+WantedBy=multi-user.target
