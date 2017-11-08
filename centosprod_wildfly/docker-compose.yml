@@ -1,0 +1,18 @@
+version: '2.1'
+
+services:
+  wildfly:
+    image: centosprod_wildfly
+    container_name: centosprod_wildfly
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - d:/docker/volumes/wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments:rw
+    ports:
+      - "21:21"
+      - "2122:22"
+      - "8787:8787"
+      - "8080:8080"
+      - "9990:9990"
+      - "64000-64010:64000-64010"

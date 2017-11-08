@@ -1,0 +1,15 @@
+[Unit]
+Description=The WildFly Application Server
+After=network.target
+
+[Service]
+Environment=LAUNCH_JBOSS_IN_BACKGROUND=1
+EnvironmentFile=/etc/systemd/system/wildfly.conf
+User=root
+LimitNOFILE=102642
+PIDFile=/var/run/wildfly/wildfly.pid
+ExecStart=/opt/jboss/wildfly/bin/launch.sh $WILDFLY_MODE $WILDFLY_CONFIG $WILDFLY_BIND $WILDFLY_MGMT_BIND
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
