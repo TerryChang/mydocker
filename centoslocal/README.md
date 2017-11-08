@@ -1,0 +1,1 @@
+Local 개발용 CENTOS의 기준 이미지

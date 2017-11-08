@@ -1,0 +1,17 @@
+version: '2.1'
+
+services:
+  oracledb:
+    image: centoslocal_oracle
+    container_name: centoslocal_oracle
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - d:/docker/volumes/oracle/tablespaces:/mnt/shared/tablespaces:rw
+    ports:
+      - "21:21"
+      - "2122:22"
+      - "1521:1521"
+      - "18080:8080"
+      - "64000-64010:64000-64010"
