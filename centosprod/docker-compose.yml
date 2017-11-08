@@ -1,0 +1,17 @@
+# docker run --cap-add=SYS_ADMIN -d --name terrycentos -v /sys/fs/cgroup:/sys/fs/cgroup:ro -v /mnt/shared/centos:/mnt/shared -p 21:21 -p 2122:22 -p 64000-64010:64000-64010 terrycentos
+# d:/docker/volumes/wildfly/standalone/deployments
+version: '2.1'
+
+services:
+  terrycentos:
+    image: centosprod
+    container_name: centosprod
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - d:/docker/volumes/centos:/mnt/shared:rw
+    ports:
+      - "21:21"
+      - "2122:22"
+      - "64000-64010:64000-64010"
