@@ -1,6 +1,6 @@
 #centoslocal 기반으로 만든 centoslocal_wildfly 이미지
 
-FROM centoslocal:latest
+FROM furywolf/centoslocal
 
 MAINTAINER Terry Chang <furywolf@hanmail.net>
 
