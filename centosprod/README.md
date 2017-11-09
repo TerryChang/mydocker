@@ -22,4 +22,4 @@ VSFTP를 예로 들어 설명하면 다음과 같이 사용할 수 있다
 
 SSH 접속으로 인해 root 계정에 비밀번호를 설정해놓았다(비밀번호는 admin)
 
-<a href="https://github.com/TerryChang/mydocker/tree/master/centosprod">Github</a>에서 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
+[Github](https://github.com/TerryChang/mydocker/tree/master/centosprod)에서 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
