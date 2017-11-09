@@ -2,13 +2,11 @@ version: '2.1'
 
 services:
   wildfly:
-    image: centoslocal_wildfly
+    image: furywolf/centoslocal_wildfly
     container_name: centoslocal_wildfly
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - d:/docker/volumes/wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments:rw
     ports:
       - "8787:8787"
       - "8080:8080"
       - "9990:9990"
-      - "64000-64010:64000-64010"

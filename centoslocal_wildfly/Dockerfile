@@ -39,6 +39,9 @@ ADD resources/launch.sh /opt/jboss/wildfly/bin/launch.sh
 RUN chmod +x /opt/jboss/wildfly/bin/launch.sh \
     && bash -c "/opt/jboss/wildfly/bin/add-user.sh admin admin"
 
+# deployments 디렉토리가 밖으로 연결이 되도록 설정한다
+VOLUME ["/opt/jboss/wildfly/standalone/deployments"]
+
 #포트 8787, 8080, 9990, 64000-64010번 열기(8787번은 Debug에 사용할 포트로 미리 열어둔다(실제 디버그 설정은 컨테이너 안에서 설정))
 EXPOSE 8787 8080 9990 64000-64010
 
