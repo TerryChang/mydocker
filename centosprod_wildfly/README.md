@@ -1,4 +1,4 @@
-furywolf/centoprod_wildfly
+furywolf/centosprod_wildfly
 ====================
 
 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)를 기준 이미지로 해서 만든 Wildfly 10.1.0.Final 이미지이다  

@@ -1,4 +1,4 @@
-furywolf/centoprod_tomcat
+furywolf/centosprod_tomcat
 ====================
 
 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)를 기준 이미지로 해서 만든 Tomcat 8.5.23 이미지이다  
