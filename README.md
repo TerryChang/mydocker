@@ -3,7 +3,7 @@ mydocker
 
 Local 개발 및 운영 서버에서 사용될 Docker Image들을 만들어주는 Source
 
-각 디렉토리엔 다음의 이미지와 관련된 소스가 있다
+각 디렉토리엔 다음의 이미지와 관련된 소스가 있다(링크 클릭시 CTRL키와 같이 클릭하시면 새 창으로 나타난다)
 
 [centoslocal](https://github.com/TerryChang/mydocker/tree/master/centoslocal) : [furywolf/centoslocal](https://hub.docker.com/r/furywolf/centoslocal/) 이미지 제작을 위한 Dockerfile 및 관련 파일들
 
