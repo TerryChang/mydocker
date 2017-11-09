@@ -1,8 +1,8 @@
 furywolf/centolocal_oracle-xe
 ====================
 
-[furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)를 기준 이미지로 해서 만든 oracle 11g xe 이미지이다<br/>
-자신의 Local PC에서 설치해서 사용할 목적이기 때문에 [furywolf/centoslocal](https://hub.docker.com/r/furywolf/centoslocal/) 이미지를 기준 이미지로 해서 만들어야 했지만<br/>
+[furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)를 기준 이미지로 해서 만든 oracle 11g xe 이미지이다  
+자신의 Local PC에서 설치해서 사용할 목적이기 때문에 [furywolf/centoslocal](https://hub.docker.com/r/furywolf/centoslocal/) 이미지를 기준 이미지로 해서 만들어야 했지만  
 Oracle과 Listener의 시작/종료/재시작을 Systemd를 이용하기 위해 Naming은 centoslocal로 했지만 기준 이미지는 운영서버 이미지인 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)를 사용해서 제작했다
 
 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/) 이미지를 기준 이미지로 했기 때문에 이 이미지가 가지고 있는 특성을 그대로 갖고 있다(root 계정 패스워드, SSH 접속, Oracle Java 설치 등)
@@ -36,7 +36,7 @@ docker run -d --name oracle-xe --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p 1521:15
 
 이 이미지 또한 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)에서 설명했듯이 **반드시 -d 옵션을 붙여서 이미지가 background로 실행**이 되게끔 해야 한다
 
-1521 포트 대신 다른 포트로 바꾸고자 할때에는 -p 1521:1521에서 앞의 1521을 원하는 포트로 바꾸면 된다(ex : -p 3009:1521)<br/>
-8080 포트 대신 다른 포트로 바꾸고자 할때에는 -p 8080:8080에서 앞의 8080를 원하는 포트로 바꾸면 된다(ex : -p 18080:8080)<br/>
+1521 포트 대신 다른 포트로 바꾸고자 할때에는 -p 1521:1521에서 앞의 1521을 원하는 포트로 바꾸면 된다(ex : -p 3009:1521)  
+8080 포트 대신 다른 포트로 바꾸고자 할때에는 -p 8080:8080에서 앞의 8080를 원하는 포트로 바꾸면 된다(ex : -p 18080:8080)  
 
 [Github](https://github.com/TerryChang/mydocker/tree/master/centoslocal_oracle-xe)에 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
