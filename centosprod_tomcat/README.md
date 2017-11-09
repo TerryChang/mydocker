@@ -34,3 +34,4 @@ docker run -d --name tomcat --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p 8000:8080 
 기타 다른 포트도 마찬가지 방법으로 바꾸면 된다
 
 [Github](https://github.com/TerryChang/mydocker/tree/master/centosprod_wildfly)에 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
+
