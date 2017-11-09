@@ -27,7 +27,7 @@ Wildfly의 관리자 계정을 등록해놨기 때문에 Wildfly의 관리자 �
 
 이 이미지를 실행할때는 다음과 같이 실행하면 된다
 
-docker run -d --name wildfly -p 21:21 -p 22:22 -p 8080:8080 -p 8787:8787 -p 9990:9990 -v /sys/fs/cgroup:/sys/fs/cgroup:ro furywolf/centosprod\_wildfly
+docker run -d --name wildfly --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p 8080:8080 -p 8787:8787 -p 9990:9990 -v /sys/fs/cgroup:/sys/fs/cgroup:ro furywolf/centosprod\_wildfly
 
 9990 포트 대신 다른 포트로 바꾸고자 할때에는 -p 9990:9990에서 앞의 9990을 원하는 포트로 바꾸면 된다(ex : -p 19990:9990)<br/>
 8080 포트 대신 다른 포트로 바꾸고자 할때에는 -p 8080:8080에서 앞의 8080를 원하는 포트로 바꾸면 된다(ex : -p 18080:8080)<br/>
