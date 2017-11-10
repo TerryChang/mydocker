@@ -2,8 +2,8 @@ version: '2.1'
 
 services:
   oracledb:
-    image: furywolf/centoslocal_oracle
-    container_name: centoslocal_oracle
+    image: furywolf/centoslocal_oracle-xe
+    container_name: centoslocal_oracle-xe
     cap_add:
       - SYS_ADMIN
     volumes:

@@ -2,12 +2,13 @@ version: '2.1'
 
 services:
   tomcat:
-    image: centosprod_tomcat
+    image: furywolf/centosprod_tomcat
     container_name: centosprod_tomcat
     cap_add:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - d:/docker/volumes/centos:/mnt/shared:rw
     ports:
       - "21:21"
       - "2122:22"

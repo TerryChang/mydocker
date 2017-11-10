@@ -13,10 +13,9 @@ MAINTAINER Terry Chang <furywolf@hanmail.net>
 ENV ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe \
 	ORACLE_SID=XE
 
-#환경변수 ORACLE_HOME과 ORACLE_SID를 설정하고
-#path 설정(terrycentos 이미지에 PATH 관련으로 /etc/profile.d/path.sh이 있기 때문에 이 파일에 추가가 되도록 설정한다)
-RUN echo -e "ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe\nORACLE_SID=XE" >> /etc/environment \
-    && echo "$(cat /etc/profile.d/path.sh):$ORACLE_HOME/bin" > /etc/profile.d/path.sh
+#환경변수를 설정하는 environment.sh 파일을 넣어둔다(여기서 PATH를 설정한다)
+COPY resources/environment.sh /etc/profile.d/
+RUN chmod +x /etc/profile.d/environment.sh
 
 ADD assets /assets
 RUN chmod +x /assets/setup.sh && /assets/setup.sh

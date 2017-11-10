@@ -8,6 +8,7 @@ services:
       - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - d:/docker/volumes/centos:/mnt/shared:rw
     ports:
       - "21:21"
       - "22:22"

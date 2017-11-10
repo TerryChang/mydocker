@@ -15,8 +15,12 @@ yum install -y xmlstarlet saxon augeas bsdtar unzip && \
 yum clean all && \
 rm -rf /var/cache/yum
 
-RUN echo -e "JBOSS_HOME=/opt/jboss/wildfly\nLAUNCH_JBOSS_IN_BACKGROUND=true" >> /etc/environment \
-	&& mkdir -p $JBOSS_HOME \
+#환경변수를 설정하는 environment.sh 파일을 넣어둔다(여기서 PATH를 설정한다)
+COPY resources/environment.sh /etc/profile.d/
+RUN chmod +x /etc/profile.d/environment.sh
+
+#wildfly 설치
+RUN mkdir -p $JBOSS_HOME \
     && curl -O https://download.jboss.org/wildfly/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz \
     && sha1sum wildfly-$WILDFLY_VERSION.tar.gz | grep $WILDFLY_SHA1 \
     && tar xf wildfly-$WILDFLY_VERSION.tar.gz \

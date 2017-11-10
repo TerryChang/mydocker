@@ -13,7 +13,11 @@ RUN yum clean all && \
 yum update -y && \
 rm -rf /var/cache/yum
 
-#환경변수 CATALINA_HOME을 설정
+#환경변수를 설정하는 environment.sh 파일을 넣어둔다(여기서 PATH를 설정한다)
+COPY resources/environment.sh /etc/profile.d/
+RUN chmod +x /etc/profile.d/environment.sh
+
+#tomcat 설치
 RUN echo -e "CATALINA_HOME=/opt/tomcat" >> /etc/environment \
 	&& mkdir -p $CATALINA_HOME \
     && curl -O http://mirror.navercorp.com/apache/tomcat/tomcat-$TOMCAT_VERSION_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz \
