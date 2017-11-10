@@ -2,7 +2,8 @@ version: '2.1'
 
 services:
   terrycentos:
-    image: furywolf/centosprod
+    #image: furywolf/centosprod
+    image: centosprod
     container_name: centosprod
     cap_add:
       - SYS_ADMIN

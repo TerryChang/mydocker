@@ -5,6 +5,7 @@
 #1. locale 한국어 설정
 #2. timezone 한국 설정
 #3. Java 설치
+#4. Maven 설치(Local Repository는 /opt/maven/repository 로 설정된다)
 
 FROM centos
 
@@ -23,8 +24,8 @@ ENV JAVA_VERSION_MAJOR=8 \
     JAVA_VERSION_MINOR=151 \
     JAVA_VERSION_BUILD=12 \
     JAVA_URL_HASH=e758a0de34e24606bca991d704f6dcbf \
-	JAVA_HOME=/opt/java
-
+	JAVA_HOME=/opt/java \
+	MAVEN_HOME=/opt/maven
 	
 #oracle java 설치(CoreOS를 이용해서 빌드할 경우)
 # 주의 사항 : 최신 버전으로 올라온게 아닌 이전 버전으로 올라왔을 경우엔 부가적으로 로그인을 물어보기 때문에 정상적인 다운로드가 이루어지지 않는다
@@ -45,25 +46,30 @@ ENV JAVA_VERSION_MAJOR=8 \
 #             tar를 이용해서 압축을 풀 경우 풀어지는 파일 리스트가 화면에 보여지기 때문에 작업상 불편할 수 있는데
 #             이럴 경우 tar -xvf를 이용해서 압축을 풀지말고 tar -xf를 이용해서 압축을 푼다
 # RUN tar -xf /tmp/jdk-8u151-linux-x64.tar.gz -C /tmp && \
-COPY resources/jdk-8u151.tar.gz* /tmp/
+COPY resources/java/jdk-8u151.tar.gz* /tmp/
 RUN cat /tmp/jdk-8u151.tar.gz* > /tmp/jdk-8u151.tar.gz && \
 tar -xf /tmp/jdk-8u151.tar.gz -C /tmp && \
 rm /tmp/jdk-8u151.tar.gz* && \
 mv /tmp/jdk* ${JAVA_HOME}
 
-#locale 설정(https://hub.docker.com/r/gmchoi/centos/~/dockerfile/ 와 https://github.com/dunkelfrosch/docker-centos7-wb/blob/master/df-wb-centos-7/Dockerfile 참조)
-RUN echo "Locale setting" && \
-localedef -c -i ko_KR -f UTF-8 ko_KR.utf8 && \
-echo -e "LANG=ko_KR.utf8\nLC_ALL=\nJAVA_HOME=/opt/java" > /etc/environment
-# ENV LANG ko_KR.utf8
+#maven 설치
+COPY resources/maven/apache-maven-3.5.2-bin.tar.gz /tmp/
+RUN tar -xf /tmp/apache-maven-3.5.2-bin.tar.gz -C /tmp && \
+rm /tmp/apache-maven*.tar.gz && \
+mv /tmp/apache-maven* ${MAVEN_HOME} && \
+mkdir -p ${MAVEN_HOME}/repository
+COPY resources/maven/settings.xml ${MAVEN_HOME}/conf
+
+#locale 설정
+RUN localedef -c -i ko_KR -f UTF-8 ko_KR.utf8
 
 #timezone 설정
-RUN echo "Change TimeZone to Asia/Seoul" && \
-rm /etc/localtime && \
+RUN rm /etc/localtime && \
 ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
-#path 설정(/etc/profile.d 디렉토리에 echo 명령을 이용해서 원하는 PATH가 추가된 path.sh 파일이 생성되도록 한다. 이렇게 하면 부팅시 path.sh를 거쳐서 PATH를 재정의한뒤 각 계정에 있는 .bash_profile 에서 정의된 PATH 재정의를 사용하게 된다)
-RUN echo -e "export PATH=$PATH:$JAVA_HOME/bin" > /etc/profile.d/path.sh
+#환경변수를 설정하는 environment.sh 파일을 넣어둔다(여기서 PATH를 설정한다)
+COPY resources/environment.sh /etc/profile.d/
+RUN chmod +x /etc/profile.d/environment.sh
 
 #Host OS와 공유할 디렉토리를 만든다
 RUN mkdir /mnt/shared
