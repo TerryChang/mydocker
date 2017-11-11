@@ -32,7 +32,7 @@ RUN systemctl enable tomcat
 #Tomcat 관리자 생성 스크립트를 넣어서 실행하도록 한다(create_admin_user.sh admin adminpwd 를 실행함으로써 관리자 id가 admin, 관리자 패스워드가 adminpwd로 되도록 한다)
 ADD resources/create_admin_user.sh $CATALINA_HOME/scripts/create_admin_user.sh
 RUN chmod +x $CATALINA_HOME/scripts/create_admin_user.sh \
-    && $CATALINA_HOME/scripts/create_admin_user.sh admin adminpwd
+    && sync && $CATALINA_HOME/scripts/create_admin_user.sh admin adminpwd
 
 #Tomcat 관리자 페이지가 접속되도록 하기 위해 기존의 context.xml이 수정된 새로운 내용의 context.xml을 복사하도록 한다
 #원래의 context.xml에서 <Valve> 태그를 주석처리한 xml 파일을 넣도록 한다
