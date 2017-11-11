@@ -18,8 +18,7 @@ COPY resources/environment.sh /etc/profile.d/
 RUN chmod +x /etc/profile.d/environment.sh
 
 #tomcat 설치
-RUN echo -e "CATALINA_HOME=/opt/tomcat" >> /etc/environment \
-	&& mkdir -p $CATALINA_HOME \
+RUN mkdir -p $CATALINA_HOME \
     && curl -O http://mirror.navercorp.com/apache/tomcat/tomcat-$TOMCAT_VERSION_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz \
     && tar xf apache-tomcat-$TOMCAT_VERSION.tar.gz \
     && mv apache-tomcat-$TOMCAT_VERSION/* $CATALINA_HOME \
