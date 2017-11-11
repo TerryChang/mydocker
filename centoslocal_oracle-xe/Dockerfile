@@ -18,7 +18,7 @@ COPY resources/environment.sh /etc/profile.d/
 RUN chmod +x /etc/profile.d/environment.sh
 
 ADD assets /assets
-RUN chmod +x /assets/setup.sh && /assets/setup.sh
+RUN chmod +x /assets/setup.sh && sync && /assets/setup.sh
 
 ADD resources/oracledb.sh /etc/systemd/system/oracledb.sh
 ADD resources/oracle.conf /etc/systemd/system/oracle.conf
