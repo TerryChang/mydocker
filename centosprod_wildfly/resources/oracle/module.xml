@@ -21,7 +21,7 @@
   ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
-
+<!-- oracle jdbc 드라이버를 wildfly에서 인식시키기위한 파일-->
 <module xmlns="urn:jboss:module:1.3" name="com.oracle.ojdbc6">
 
     <resources>
