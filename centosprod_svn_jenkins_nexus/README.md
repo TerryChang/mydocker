@@ -29,6 +29,12 @@ Subversion, Jenkins, Nexus의 시작/종료/재시작을 Systemd를 이용해서
 * Nexus 서비스 재시작(ex : systemctl restart nexus.service)
 * Nexus 서비스 현재 상태 확인(ex: systemctl status nexus.service)
 
+Subversion의 최상위 저장소 디렉토리는 /home/svn 으로 되어있다. 그래서 /home/svn 디렉토리에서 각 Subversion 저장소를 만들어서 
+사용하도록 한다
+
+Jenkins와 Nexus의 경우는 설치 과정에서 root 계정이 아닌 별도 계정을 만든뒤에 이 계정에서 서비스가 구동되도록 되어있다. Jenkins의 
+경우엔 jenkins 란 계정이, Nexus의 경우엔 nexus 란 계정이 실행하도록 되어있다.
+
 Jenkins를 운영할 때 JDK와 Maven을 설정해야 하는데 이때 사용해야 할 JAVA_HOME과 MAVEN_HOME은 다음과 같이 설정한다
 
 JAVA_HOME : /opt/java
@@ -45,10 +51,12 @@ docker run -d --name svn_jenkins_nexus --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p
 -v d:/docker/volumes/centosprod_jenkins_svn/jenkins:/mnt/shared/jenkins:rw 
 -v d:/docker/volumes/centosprod_jenkins_svn/nexus:/mnt/shared/nexus:rw furywolf/centosprod\_svn_jenkins_nexus
 
-이 이미지 또한 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)에서 설명했듯이 **반드시 -d 옵션을 붙여서 이미지가 background로 실행**이 되게끔 해야 한다
+이 이미지 또한 [furywolf/centosprod](https://hub.docker.com/r/furywolf/centosprod/)에서 설명했듯이 **반드시 -d 옵션을 붙여서 
+이미지가 background로 실행**이 되게끔 해야 한다
 
 3690 포트 대신 다른 포트로 바꾸고자 할때에는 -p 3690:3690에서 앞의 3690을 원하는 포트로 바꾸면 된다(ex : -p 13690:3690)  
 기타 다른 포트도 마찬가지 방법으로 바꾸면 된다
 
-[Github](https://github.com/TerryChang/mydocker/tree/master/centosprod_wildfly)에 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
+[Github](https://github.com/TerryChang/mydocker/tree/master/centosprod_svn_jenkins_nexus)에 이 이미지를 실행하기 위한 
+docker-compose.yml 파일이 있으니 참고하길 바란다
 

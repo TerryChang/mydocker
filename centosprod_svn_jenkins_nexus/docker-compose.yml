@@ -10,7 +10,7 @@ version: '2.1'
 
 services:
   svn_jenkins_nexus:
-    image: centosprod_svn_jenkins_nexus
+    image: furywolf/centosprod_svn_jenkins_nexus
     container_name: centosprod_svn_jenkins_nexus
     cap_add:
       - SYS_ADMIN
