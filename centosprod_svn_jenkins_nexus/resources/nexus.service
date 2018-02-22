@@ -1,0 +1,19 @@
+# /etc/systemd/system/nexus.service
+
+[Unit]
+Description=Nexus Service
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/etc/systemd/system/nexus.conf
+WorkingDirectory=/opt/sonatype/nexus
+ExecStart=/opt/sonatype/nexus/bin/nexus start
+ExecStop=/opt/sonatype/nexus/bin/nexus stop
+ExecReload=/opt/sonatype/nexus/bin/nexus restart
+PIDFile=/opt/sonatype/nexus/bin/jsw/linux-x86-64/nexus.pid
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
