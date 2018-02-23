@@ -60,6 +60,10 @@ mv /tmp/apache-maven* ${MAVEN_HOME} && \
 mkdir -p ${MAVEN_HOME}/repository
 COPY resources/maven/settings.xml ${MAVEN_HOME}/conf
 
+# 설치한 java와 maven(mvn)에 대해 soft link를 만들어둔다(로그인 기능이 없는 시스템 계정을 생성할 경우 java와 maven 명령을 사용하기 위함이다)
+RUN ln -s /opt/java/bin/java /usr/bin/java && \
+ln -s /opt/maven/bin/mvn /usr/bin/mvn
+
 #locale 설정
 RUN localedef -c -i ko_KR -f UTF-8 ko_KR.utf8
 
