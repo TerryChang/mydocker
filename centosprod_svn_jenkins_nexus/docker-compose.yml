@@ -1,3 +1,7 @@
+# network는 dockernet 이라는 별도의 network를 만들어서 여기에서 실행이 되도록 했다
+# 아래와 같이 dockernet 이라는 network를 먼저 만들고 난 뒤에 docker-compose를 실행하도록 한다
+# docker network create -d bridge --subnet 172.100.0.0/24 --gateway 172.100.0.1 dockernet
+
 # nexus가 사용하는 port(현재는 8081)의 경우 이 port와 연결하는 외부 port는 같은 port 번호를 사용하는 것을 권장한다
 # 왜냐면 jenkins 같은 툴이 소스를 내려받아 빌드를 시도하는 시점에 repository를 연결해서 가져오게 되는데 이때 해당 repository 주소를 명시해야 하기 때문에
 # port 번호가 다르게 될 경우 연결에 문제가 발생해서 같은 번호로 연결되도록 한다
@@ -22,3 +26,8 @@ services:
       - "3080:8080"
       - "8081:8081"
       - "64000-64010:64000-64010"
+    networks:
+          - dockernet
+networks:
+  dockernet:
+    external: true
