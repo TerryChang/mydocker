@@ -4,8 +4,8 @@ FROM furywolf/centoslocal
 
 MAINTAINER Terry Chang <furywolf@hanmail.net>
 
-ENV WILDFLY_VERSION=10.1.0.Final \
-	WILDFLY_SHA1=9ee3c0255e2e6007d502223916cefad2a1a5e333 \
+ENV WILDFLY_VERSION=13.0.0.Final \
+	WILDFLY_SHA1=3d63b72d9479fea0e3462264dd2250ccd96435f9 \
     JBOSS_HOME=/opt/jboss/wildfly \
 	LAUNCH_JBOSS_IN_BACKGROUND=true	
 	

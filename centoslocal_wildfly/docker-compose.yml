@@ -1,12 +1,22 @@
+# network는 dockernet 이라는 별도의 network를 만들어서 여기에서 실행이 되도록 했다
+# 아래와 같이 dockernet 이라는 network를 먼저 만들고 난 뒤에 docker-compose를 실행하도록 한다
+# docker network create -d bridge --subnet 192.168.100.0/24 --gateway 192.168.100.1 dockernet
+
 version: '2.1'
 
 services:
   wildfly:
-    image: furywolf/centoslocal_wildfly
+    image: centoslocal_wildfly
     container_name: centoslocal_wildfly
     volumes:
-      - d:/docker/volumes/wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments:rw
+      - D:/docker/volumes/centoslocal_wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments:rw
     ports:
-      - "8787:8787"
-      - "8080:8080"
-      - "9990:9990"
+      - "18787:8787"
+      - "18080:8080"
+      - "19990:9990"
+    networks:
+      dockernet:
+        ipv4_address: 192.168.100.14
+networks:
+  dockernet:
+    external: true
