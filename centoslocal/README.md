@@ -21,5 +21,5 @@ docker run -it --name centoslocal -p 23:23  -v d:/docker/volumes/centos:/mnt/sha
 
 변경사항
 
-* 2018-07-19
-    1. Oracle Java 에서 OpenJDK로 바꾸어서 설치(2018-07-20)
+* 2018-07-23
+    1. Oracle Java 에서 OpenJDK로 바꾸어서 설치(2018-07-23)
