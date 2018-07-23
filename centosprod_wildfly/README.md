@@ -37,3 +37,8 @@ docker run -d --name wildfly --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p 8080:8080
 
 [Github](https://github.com/TerryChang/mydocker/tree/master/centosprod_wildfly)에 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
 
+변경사항
+
+* 2018-07-23
+    1. Wildfly 버전 업그레이드(10.1.0.Final -> 13.0.0.Final)
+
