@@ -7,7 +7,7 @@ CentOS를 기반으로 한 운영서버 이미지들의 부모 이미지로 2017
 
 1. 로케일을 한국어(ko_KR.utf8)로 설정(java를 실행하면 도움말이 한글로 나오는 것을 확인할 수 있다)
 2. TimeZone을 Asia/Seoul로 설정
-3. Oracle Java 설치
+3. OpenJDK 설치
 4. Maven 설치
 5. HOST OS와의 공유를 위해 /mnt/shared 디렉토리를 VOLUME으로 등록
 6. Systemd를 기반으로 한 서비스 관리 적용
@@ -38,3 +38,8 @@ SSH 접속 포트를 바꾸고자 할때에는 -p 22:22에서 앞의 22를 원�
 SSH를 이용한 FTP 접속도 가능한데 이때는 FTP 접속 포트를 SSH 접속하면 된다  
 
 [Github](https://github.com/TerryChang/mydocker/tree/master/centosprod)에 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
+
+변경사항
+
+* 2018-07-23
+    1. Oracle Java 에서 OpenJDK로 바꾸어서 설치(2018-07-23)
