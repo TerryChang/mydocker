@@ -6,7 +6,7 @@ version: '2.1'
 
 services:
   wildfly:
-    image: centoslocal_wildfly
+    image: furywolf/centoslocal_wildfly
     container_name: centoslocal_wildfly
     volumes:
       - D:/docker/volumes/centoslocal_wildfly/standalone/deployments:/opt/jboss/wildfly/standalone/deployments:rw
