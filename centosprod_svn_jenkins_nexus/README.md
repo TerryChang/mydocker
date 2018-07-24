@@ -60,3 +60,8 @@ docker run -d --name svn_jenkins_nexus --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p
 [Github](https://github.com/TerryChang/mydocker/tree/master/centosprod_svn_jenkins_nexus)에 이 이미지를 실행하기 위한 
 docker-compose.yml 파일이 있으니 참고하길 바란다
 
+변경사항
+
+* 2018-07-24
+    1. Jenkins 버전 업그레이드(2.89.4 -> 2.121.2)
+    2. Nexus 버전 업그레이드(2.14.6-02 -> 2.14.9-01)

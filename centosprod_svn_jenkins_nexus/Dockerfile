@@ -7,7 +7,7 @@ FROM furywolf/centosprod
 MAINTAINER Terry Chang <furywolf@hanmail.net>
 
 #Nexus 설치 관련 변수를 설정한다
-ARG NEXUS_VERSION=2.14.6-02
+ARG NEXUS_VERSION=2.14.9-01
 ARG NEXUS_DOWNLOAD_URL=https://download.sonatype.com/nexus/oss/nexus-${NEXUS_VERSION}-bundle.tar.gz
 ENV NEXUS_HOME=/home/nexus
 	

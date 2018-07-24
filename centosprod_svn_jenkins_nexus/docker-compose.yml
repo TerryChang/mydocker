@@ -1,11 +1,16 @@
 # network는 dockernet 이라는 별도의 network를 만들어서 여기에서 실행이 되도록 했다
 # 아래와 같이 dockernet 이라는 network를 먼저 만들고 난 뒤에 docker-compose를 실행하도록 한다
-# docker network create -d bridge --subnet 172.100.0.0/24 --gateway 172.100.0.1 dockernet
+# docker network create -d bridge --subnet 192.168.100.0/24 --gateway 192.168.100.1 dockernet
 
 # nexus가 사용하는 port(현재는 8081)의 경우 이 port와 연결하는 외부 port는 같은 port 번호를 사용하는 것을 권장한다
 # 왜냐면 jenkins 같은 툴이 소스를 내려받아 빌드를 시도하는 시점에 repository를 연결해서 가져오게 되는데 이때 해당 repository 주소를 명시해야 하기 때문에
 # port 번호가 다르게 될 경우 연결에 문제가 발생해서 같은 번호로 연결되도록 한다
 # (연결의 방법이 docker container에서 host로 연결해서 다시 거기에서 container로 연결하는 방식으로 전개되는 시나리오라서..)
+
+# docker for windows의 docker community edition 18.03.0을 사용하면 docker-compose 가 1.20.1로 업그레이드 되면서
+# docker-compose가 내부적으로 사용하는 python 때문에 그런지 docker-compose.yml 파일에 한글 주석을 사용할 경우
+# docker-compose 명령 실행시 에러가 발생하며 실행이 되지 않는다.
+# docker for windows의 docker community edition 17.12.0을 사용하도록 한다
 version: '2.1'
 
 services:
@@ -24,10 +29,12 @@ services:
       - "2222:22"
       - "3690:3690"
       - "3080:8080"
-      - "8081:8081"
-      - "64000-64010:64000-64010"
+      - "3081:8081"
+      # - "64000-64010:64000-64010"
     networks:
-          - dockernet
+      dockernet:
+        ipv4_address: 192.168.100.16
+    restart: always
 networks:
   dockernet:
     external: true
