@@ -1,8 +1,11 @@
+# network는 dockernet 이라는 별도의 network를 만들어서 여기에서 실행이 되도록 했다
+# 아래와 같이 dockernet 이라는 network를 먼저 만들고 난 뒤에 docker-compose를 실행하도록 한다
+# docker network create -d bridge --subnet 192.168.100.0/24 --gateway 192.168.100.1 dockernet
 version: '2.1'
 
 services:
   tomcat:
-    image: furywolf/centosprod_tomcat
+    image: centosprod_tomcat
     container_name: centosprod_tomcat
     cap_add:
       - SYS_ADMIN
@@ -16,3 +19,9 @@ services:
       - "8080:8080"
       - "8009:8009"
       - "64000-64010:64000-64010"
+    networks:
+      dockernet:
+        ipv4_address: 192.168.100.17
+networks:
+  dockernet:
+    external: true

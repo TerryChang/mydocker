@@ -5,7 +5,7 @@ FROM furywolf/centosprod
 MAINTAINER Terry Chang <furywolf@hanmail.net>
 
 ENV TOMCAT_VERSION_MAJOR=8 \
-    TOMCAT_VERSION=8.5.27 \
+    TOMCAT_VERSION=8.5.32 \
     CATALINA_HOME=/opt/tomcat \
 	JPDA_ADDRESS=8000
 	

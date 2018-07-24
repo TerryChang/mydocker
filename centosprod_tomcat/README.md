@@ -35,3 +35,8 @@ docker run -d --name tomcat --cap-add=SYS\_ADMIN -p 21:21 -p 22:22 -p 8000:8080 
 
 [Github](https://github.com/TerryChang/mydocker/tree/master/centosprod_tomcat)에 이 이미지를 실행하기 위한 docker-compose.yml 파일이 있으니 참고하길 바란다
 
+변경사항
+
+* 2018-07-24
+    1. Tomcat 버전 업그레이드(8.5.27 -> 8.5.32)
+
