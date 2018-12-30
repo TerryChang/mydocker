@@ -5,7 +5,7 @@ version: '2.1'
 
 services:
   centosprod_redmine:
-    image: redmine
+    image: furywolf/centosprod_redmine
     container_name: redmine
     cap_add:
       - SYS_ADMIN
