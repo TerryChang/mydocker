@@ -16,6 +16,7 @@ RUN yum clean all \
 && systemctl enable mariadb.service \
 && mysql_install_db \
 && /etc/init.d/mysql start \
+&& chmod +x /resources/mariadb_secure_init.sh
 && /resources/mariadb_secure_init.sh \
 && mysql -uroot -proot < /resources/redmine_database.sql \
 && yum -y install php php-mysql php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel \
