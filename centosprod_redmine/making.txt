@@ -1,0 +1,8 @@
+전반적인 install 과정은 http://goddaehee.tistory.com/78 링크보고 진행하지만
+ruby install에 대해서는 https://tecadmin.net/install-ruby-latest-stable-centos/ 링크 보고 진행할것
+mariadb 설치는 http://haru.kafra.kr/24 보자
+mysql 설치에 대한 자동응답 스크립트 개발과 관련해서는 https://gist.github.com/Mins/4602864 를 본다
+이때 질문에 대한 문구를 정확하게 가지고 와야 하며 이에 대한 언급도 해줄 필요가 있다
+shell 상태에서 mysql 명령어를 이용해 외부 스크립트를 실행하는건 http://jybaek.tistory.com/316 를 본다
+passenger-install-apache2-module 명령 실행시에 명령 입력자에게 물어보고 진행하는게 있어서..
+이런거 없이 설치되게끔 할려면 passenger-install-apache2-module --auto 이렇게 실행을 한다. 그러나 이 방법은 검증해야 한다
