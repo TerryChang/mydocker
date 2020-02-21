@@ -8,7 +8,7 @@ FROM furywolf/springboot_base
 
 MAINTAINER Terry Chang <furywolf@hanmail.net>
 
-ADD kubernetes-sample.jar /
+ADD ./kubernetes-sample.jar /
 
 EXPOSE 8080
 
